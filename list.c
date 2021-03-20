@@ -90,9 +90,8 @@ void pushFront(List * list, const void * data) {
   }
   if ((list->head != NULL) && list->head->next != NULL)
   {
-    list->head->next = list->head->next->next;
-    list->head->next = list->head;
-    
+    list->head->prev = temp;
+    temp->next = list->head;
     list->head = temp;
     
   }
