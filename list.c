@@ -163,6 +163,7 @@ void * popCurrent(List * list) {
     temp = list->current->prev;
     temp->next = list->current->next;
     list->current = temp;
+    
 
   }
   if (list->current != NULL && list->current->prev == NULL) //En el head
@@ -175,10 +176,12 @@ void * popCurrent(List * list) {
     }
     if (list->head->next != NULL)
     {
+      aux = list->current->next->next;
       temp = list->head->next;
       temp->prev = NULL;
       list->current = temp;
       list->head = temp;
+      list->head->next = aux;
 
     }
   }
