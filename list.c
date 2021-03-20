@@ -177,8 +177,18 @@ void * popCurrent(List * list) {
       list->head = NULL;
     }
   }
+  //Pop al 2do espacio
+    if (list->current == list->head->next)
+    {
+      list->current = list->current->next;
+      list->current->next = list->current->next->next;
+      list->current->prev = list->head;
+      list->head = list->current;
+
+    }
+
   
-  //Pop en medio
+  //Pop en medio(3 o mas)
   if ((list->current) && (list->current->prev) && (list->current->next))
   {
     temp = list->current->next;
