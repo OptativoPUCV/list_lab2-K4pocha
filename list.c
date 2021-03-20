@@ -156,47 +156,29 @@ void * popBack(List * list) {
 
 void * popCurrent(List * list) {
   Node * temp = NULL;
-  Node * aux = NULL;
   Node * valor = NULL;
-  valor = list->current;
-  if (list->current != NULL && list->current->next != NULL && list->current->prev != NULL) //En medio
-  {
-    temp = list->current->prev;
-    temp->next = list->current->next;
-    list->current = temp;
-    
 
-  }
-  if (list->current != NULL && list->current->prev == NULL) //En el head
+  valor = list->current;
+  valor->data = list->current->data;
+  //Pop En head
+  if ((list->current) && (list->current->prev == NULL))
   {
-    if (list->head->next == NULL)
+    if (list->current->next == NULL)
     {
       list->head = NULL;
       list->current = NULL;
-      list->tail = NULL;
-    }
-    if (list->head->next != NULL)
-    {
-      aux = list->current->next->next;
-      temp = list->head->next;
+    } else {
+      temp = list->current->next;
       temp->prev = NULL;
+      temp->next = list->current->next->next;
       list->current = temp;
-      list->head = temp;
-      list->head->next = aux;
+    }
+  }
+  //Pop en medio
 
-    }
-  }
-  if (list->current != NULL && list->current->next == NULL) //en la cola
-  {
-    if (list->current->prev != NULL)
-    {
-      temp = list->current->prev;
-      temp->next = NULL;
-      list->current = temp;
-      list->tail = temp;
-    }
-  }
-    return (List *)valor->data;
+  //Pop en cola
+  
+  return (List *)valor->data;
 }
 
 
