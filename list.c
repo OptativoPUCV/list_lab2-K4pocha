@@ -128,7 +128,18 @@ void pushCurrent(List * list, const void * data) {
     list->current->next = temp;
 
     return;
-    
+  }
+  if (list->current != NULL && list->current->prev == NULL ) //push en cabeza
+  {
+    if (list->head->next == NULL)
+    {
+      temp->prev = list->head;
+      list->head->next = temp;
+      return;
+    }
+    temp->prev = list->head;
+    temp->next = list->head->next;
+    list->head->next = temp;
   }
 }
 
