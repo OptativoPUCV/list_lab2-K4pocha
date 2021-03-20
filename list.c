@@ -121,10 +121,12 @@ void pushCurrent(List * list, const void * data) {
     return;
     
   }
-  if (list->current != NULL && list->current->next != NULL)
+  if (list->current != NULL && list->current->next != NULL && list->current->prev != NULL) //en medio
   { 
+    temp->prev = list->current;
+    temp->next = list->current->next;
     list->current->next = temp;
-    temp->next = list->current->next->next;
+
     return;
     
   }
