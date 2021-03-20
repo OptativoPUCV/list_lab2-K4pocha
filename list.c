@@ -157,7 +157,8 @@ void * popBack(List * list) {
 void * popCurrent(List * list) {
   Node * temp = NULL;
   Node * aux = NULL;
-  aux = list->current;
+  Node * valor = NULL;
+  valor = list->current;
   if (list->current != NULL && list->current->next != NULL && list->current->prev != NULL) //En medio
   {
     temp = list->current->prev;
@@ -195,7 +196,7 @@ void * popCurrent(List * list) {
       list->tail = temp;
     }
   }
-    return (List *)aux->data;
+    return (List *)valor->data;
 }
 
 
