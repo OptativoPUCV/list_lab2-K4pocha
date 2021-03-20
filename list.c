@@ -172,9 +172,8 @@ void * popCurrent(List * list) {
       temp->prev = NULL;
       temp->next = list->current->next->next;
       list->current = temp;
-       
-      //list->current = temp;
       list->head->next = temp->next;
+      list->head = temp;
     }
   }
   //Pop en medio
