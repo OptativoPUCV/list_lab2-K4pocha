@@ -104,8 +104,13 @@ void pushBack(List * list, const void * data) {
 
 void pushCurrent(List * list, const void * data) {
   Node * temp = createNode(data);
+
   if (list->head == NULL)
   {
+    list->head = temp;
+    list->head->prev =NULL;
+    list->head->next =NULL;
+
     return;
   }
   if (list->current != NULL && list->current->next == NULL)
