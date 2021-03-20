@@ -41,7 +41,7 @@ void * firstList(List * list) {
   
   if ((list->head != NULL) && (list->head->data != NULL)) {
     list->current = list->head;
-    return list->head;
+    return (List *)list->head->data;
   }
   return NULL;
 }
