@@ -185,7 +185,15 @@ void * popCurrent(List * list) {
     list->current = temp;
   }
   //Pop en cola
-  
+  if ((list->current) && (list->current->prev) && (list->current->next == NULL))
+  {
+    //temp = list->current;
+    list->current = list->current->prev;
+    list->tail = list->current;
+  }
+
+
+
   return (List *)valor->data;
 }
 
