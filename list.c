@@ -165,7 +165,7 @@ void * popCurrent(List * list) {
     list->current = temp;
 
   }
-  if (list->current != NULL && list->current->prev == NULL)
+  if (list->current != NULL && list->current->prev == NULL) //En el head
   {
     if (list->head->next == NULL)
     {
@@ -178,11 +178,23 @@ void * popCurrent(List * list) {
       temp = list->head->next;
       temp->prev = NULL;
       list->current = temp;
+      list->head = temp;
 
+    }
+  }
+  if (list->current != NULL && list->current->next == NULL) //en la cola
+  {
+    if (list->current->prev != NULL)
+    {
+      temp = list->current->prev;
+      temp->next = NULL;
+      list->current = temp;
+      list->tail = temp;
     }
   }
     return (List *)aux->data;
 }
+
 
 void cleanList(List * list) {
     while (list->head != NULL) {
