@@ -161,22 +161,21 @@ void * popCurrent(List * list) {
   valor = list->current;
   valor->data = list->current->data;
   //Pop En head
-  if ((list->current) && (list->current->prev == NULL))
-  {
+  if ((list->current) && (list->current->prev == NULL)){
+    if (list->current->next)
+    {
+      list->current = list->current->next;
+      list->current->prev = NULL;
+      list->head = list->current;
+    }
     if (list->current->next == NULL)
     {
-      list->head = NULL;
       list->current = NULL;
-    } else {
-      temp = list->current->next;
-      temp->prev = NULL;
-      temp->next = list->current->next->next;
-      list->current = temp;
-      list->head = list->current;
-      list->head->next = temp->next;
-    
+      list->tail = NULL;
+      list->head = NULL;
     }
   }
+  
   //Pop en medio
   if ((list->current) && (list->current->prev) && (list->current->next))
   {
