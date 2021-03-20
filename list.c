@@ -177,7 +177,12 @@ void * popCurrent(List * list) {
     }
   }
   //Pop en medio
-
+  if ((list->current) && (list->current->prev) && (list->current->next))
+  {
+    temp = list->current->next;
+    temp->prev = list->current->prev;
+    list->current = temp;
+  }
   //Pop en cola
   
   return (List *)valor->data;
