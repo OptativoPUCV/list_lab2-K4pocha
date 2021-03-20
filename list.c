@@ -93,7 +93,7 @@ void pushFront(List * list, const void * data) {
     list->head->prev = temp;
     temp->next = list->head;
     list->head = temp;
-    
+    return;    
   }
 }
 
@@ -112,12 +112,14 @@ void pushCurrent(List * list, const void * data) {
   {
     list->current->next = temp;
     temp->prev = list->head;
+    return;
     
   }
   if (list->current != NULL && list->current->next != NULL)
   { 
     list->current->next = temp;
     temp->next = list->current->next->next;
+    return;
     
   }
 }
