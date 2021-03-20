@@ -113,10 +113,11 @@ void pushCurrent(List * list, const void * data) {
 
     return;
   }
-  if (list->current != NULL && list->current->next == NULL)
+  if (list->current != NULL && list->current->prev != NULL && list->current->next == NULL) //Push en la cola
   {
     list->current->next = temp;
-    temp->prev = list->head;
+    temp->prev = list->tail;
+ 
     return;
     
   }
