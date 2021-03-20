@@ -165,6 +165,14 @@ void * popCurrent(List * list) {
     list->current = temp;
 
   }
+  if (list->current != NULL && list->current->prev == NULL)
+  {
+    if (list->head->next == NULL)
+    {
+      list->head = NULL;
+      list->current = NULL;
+    }
+  }
     return (List *)aux->data;
 }
 
