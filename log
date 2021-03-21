@@ -340,3 +340,11 @@ Sun Mar 21 01:07:28 UTC 2021:
  tests:  11|1
 total_score: 55/70
 30ecb36
+Sun Mar 21 01:09:42 UTC 2021: 
+ list.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+free(): double free detected in tcache 2
+free(): double free detected in tcache 2
+ tests:  0|0
+free(): double free detected in tcache 2
+e95cf0d
