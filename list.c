@@ -180,6 +180,7 @@ if (list->current != NULL && list->current->prev == NULL && list->current->next 
   list->current->next = list->current->next->next;
   list->current = temp;
   list->head = temp;
+  list->head->next = list->current->next;
   temp->prev = NULL;
 }
 
