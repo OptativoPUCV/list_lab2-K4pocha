@@ -160,48 +160,27 @@ void * popCurrent(List * list) {
 
   valor = list->current;
   valor->data = list->current->data;
-  //Pop En head
-  if ((list->current) && (list->current->prev == NULL)){
-    if (list->current->next)
-    {
-      list->current = list->current->next;
-      list->current->prev = NULL;
-      list->head = list->current;
-      temp = list->current->next;
-      list->head->next = temp;
-    }
-    if (list->current->next == NULL)
-    {
-      list->current = NULL;
-      list->tail = NULL;
-      list->head = NULL;
-    }
-  }
-  //Pop al 2do espacio
-    if (list->current == list->head->next)
-    {
-      list->current = list->current->next;
-      list->current->next = list->current->next->next;
-      list->current->prev = list->head;
-      list->head = list->current;
 
-    }
+//Pop current en head
+if (list->head->prev != NULL || list->head == NULL) 
+{
+  return 0;
+}
 
-  
-  //Pop en medio(3 o mas)
-  if ((list->current) && (list->current->prev) && (list->current->next))
-  {
-    temp = list->current->next;
-    temp->prev = list->current->prev;
-    list->current = temp;
-  }
-  //Pop en cola
-  if ((list->current) && (list->current->prev) && (list->current->next == NULL))
-  {
-    //temp = list->current;
-    list->current = list->current->prev;
-    list->tail = list->current;
-  }
+if (list->head->next == NULL)   //1 solo dato en la lista
+{
+  list->current->next = NULL;
+  list->head = NULL;
+  list->current = NULL;
+  list->tail = NULL;
+}
+if (list->current != NULL && list->current->prev == NULL && list->current->next != NULL)
+{
+  temp = list->current->next;
+  list->current->next = list->current->next->next;
+  list->current = temp;
+  list->head = temp;
+}
 
 
 
