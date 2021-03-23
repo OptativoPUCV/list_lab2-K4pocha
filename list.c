@@ -158,31 +158,25 @@ void * popCurrent(List * list) {
 
   void *dato;
   dato = calloc(1, sizeof(void *)); /**reservando memoria para dato "void" y asi                                            guardar contenido de list->current->data **/
+  if (list->head == NULL)
+  { 
+    return 0;
+  }
 
-  if ( !(list->head && list->head->data)) return NULL; //Si no existen retorna NULL
+  Node * temp = list->current;
+  dato = (List *)temp->data;
 
-  dato = (List *)list->current->data;
-  Node * temp = (Node *) malloc(sizeof(Node));
+  if (list->current == list->head)
+  {
+    list->head = temp->next;
+    free(temp);
+    return dato;
+  }
   
-  temp = list->current;
-
-  if (list->current->prev != NULL)
-  {
-    list->current = temp->prev;
-    list->current->next = temp->next;
-  }
-
-  if (list->current->next != NULL)
-  {
-    list->current = temp->next;
-    list->current->prev = temp->prev;
-  }
-  if (temp == list->head)
-  {
-    list->head = list->current->next;
-  }
   return dato;
+
 }
+
 
 
 void cleanList(List * list) {
