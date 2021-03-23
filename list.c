@@ -160,8 +160,8 @@ void * popCurrent(List * list) {
   void *dato;
   dato = calloc(1, sizeof(void *)); /**reservando memoria para dato "void" y asi                                            guardar contenido de list->current->data **/
 
-  if (dato == NULL ) exit(0); //No se reservo la memoria por algun motivo
-  if ( !(list->head && list->head->data))
+  if (dato == NULL ) return(0); //No se reservo la memoria por algun motivo
+  if ( !(list->head && list->head->data)) //Si no existen retorna NULL
     return NULL;
   else {  
     dato = (List *)list->current->data;
@@ -184,7 +184,10 @@ void * popCurrent(List * list) {
     free (temp);
   
   //Current en tail
-
+  if (list->current == list->tail)
+  {
+    
+  }
 
 //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
