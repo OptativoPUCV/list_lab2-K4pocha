@@ -163,7 +163,7 @@ void * popCurrent(List * list) {
 
   dato = (List *)list->current->data;
 
-  //Node * aux_current = list->current;
+  Node * aux_current_next = list->current->next->next;
   Node * aux_next = list->current->next;
   //Node * aux_prev = list->current->prev;
   
@@ -172,6 +172,7 @@ void * popCurrent(List * list) {
   {
     list->current = aux_next;
     list->head = aux_next;
+    list->head->next = aux_current_next;
     list->current->prev = NULL;
 
   }
