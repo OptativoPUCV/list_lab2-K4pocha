@@ -163,34 +163,26 @@ void * popCurrent(List * list) {
 
   dato = (List *)list->current->data;
 
-  Node * aux_current_next = list->current->next->next;
-  Node * aux_next = list->current->next;
-  Node * aux_prev = list->current->prev;
-  
-  
-  //Current en head
+  Node * temp = NULL;
+
   if (list->current == list->head)
   {
-    list->current = aux_next;
-    list->head = aux_next;
-    list->head->next = aux_current_next;
-    list->current->prev = NULL;
-  }
-
-  if (list->current == list->head->next)
-  {
+    temp = list->current->next->next;
     list->current = list->current->next;
-    list->current->next = aux_current_next;
-    list->current->prev = list->head;
-    list->head->next = list->current;
+    list->current->prev = NULL; //Necesario? ya estaba en head ..
+    list->current->next = temp;
+    list->head = list->current;
+    list->head->next = temp;
   }
 
   if (list->current == list->tail)
   {
-    list->current = aux_prev;
-    list->tail = aux_prev;
-    list->current->next = NULL;
-    list->tail->prev = aux_prev->prev;
+
+  }
+
+  if (list->current != NULL && list->current != list->tail && list->current != list->head)
+  {
+
   }
 
   return dato;
