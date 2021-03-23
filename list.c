@@ -162,30 +162,15 @@ void * popCurrent(List * list) {
   if ( !(list->head && list->head->data)) return NULL; //Si no existen retorna NULL
 
   dato = (List *)list->current->data;
-  //Node * temp = (Node *) malloc(sizeof(Node));
+  Node * temp = (Node *) malloc(sizeof(Node));
   
-  //temp = list->current;
+  temp = list->current;
 
-  if (list->current == list->head)
+  if (list->current->prev != NULL)
   {
-    list->current = list->head->next;
-    list->current->next = list->head->next->next;
-    list->current->prev = NULL;
-    list->head = list->current;
-    
-
-  }
-
-  if (list->current == list->tail)
-  {
-
-  }
-
-  if (list->current != NULL && list->current != list->tail && list->current != list->head)
-  {
-
-
-
+    list->current = temp->prev;
+    list->current->next = temp->next;
+  
   }
 
   return dato;
