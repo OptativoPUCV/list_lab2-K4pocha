@@ -170,7 +170,12 @@ void * popCurrent(List * list) {
   {
     list->current = temp->prev;
     list->current->next = temp->next;
-  
+  }
+
+  if (list->current->next != NULL)
+  {
+    list->current = temp->next;
+    list->current->prev = temp->prev;
   }
 
   return dato;
