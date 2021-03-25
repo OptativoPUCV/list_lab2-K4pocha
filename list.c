@@ -41,7 +41,7 @@ void * firstList(List * list) {
   
   if ((list->head != NULL) && (list->head->data != NULL)) {
     list->current = list->head;
-    return (List *)list->head->data; 
+    return (void *)list->head->data; 
     /** 
     return list->head->data; Me salia el error return discards ‘const’ qualifier from pointer target type, pero encontre esto ... https://stackoverflow.com/questions/24830335/c-compiler-warning-return-discards-qualifiers-from-pointer-target-type **/
   }
@@ -52,7 +52,7 @@ void * nextList(List * list) {
   if ((list->current) && (list->current->next) && (list->current->next->data != NULL))
   {
     list->current = list->current->next;
-    return (List *)list->current->data;
+    return (void *)list->current->data;
   }
     
   return NULL;
@@ -64,7 +64,7 @@ void * lastList(List * list) {
   {
     list->current = list->tail;
     list->current->next = NULL; //Es necesario?
-    return (List *)list->current->data;
+    return (void *)list->current->data;
   }
     
     return NULL;
@@ -74,7 +74,7 @@ void * prevList(List * list) {
   if (list->current && list->current->prev && list->current->prev->data )
   {
     list->current = list->current->prev;
-    return (List *)list->current->data;   
+    return (void *)list->current->data;   
   }
     return NULL;
 }
@@ -171,7 +171,7 @@ void * popCurrent(List * list) {
     list->head = temp->next;
     list->head->prev = NULL;
     list->current = temp->next;
-    list->head->next = temp->next->next;
+    //list->head->next = temp->next->next;
     free(temp);
     return dato;
   }
