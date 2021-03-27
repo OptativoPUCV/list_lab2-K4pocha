@@ -196,10 +196,11 @@ void * popCurrent(List * list) {
     free(temp);
     return dato; **/
 
-    list->current = temp->next;
-    list->current->prev = list->head;
-    list->head->next = temp->next->next;
-
+    Node * nodo = list->current;
+    nodo->data = nodo->next->data;
+    nodo->next = nodo->next->next;
+    
+   
     free(temp);
 
   }
