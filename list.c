@@ -200,6 +200,7 @@ void * popCurrent(List * list) {
 
     temp->data = temp->next->data;
     temp->next=temp->next->next;
+    list->head->next = temp->next;
     free(temp);
     return dato;
 
