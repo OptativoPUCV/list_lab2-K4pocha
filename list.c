@@ -196,13 +196,16 @@ void * popCurrent(List * list) {
     free(temp);
     return dato; **/
 
-    *temp= *(temp->next);
+    if (temp == NULL || temp->next == NULL) return 0;
+
+    temp->data = temp->next->data;
+    temp->next=temp->next->next;
+    free(temp);
+    return dato;
 
   }
-  
 
   return dato;
-
 }
 
 
