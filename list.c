@@ -183,8 +183,8 @@ void * popCurrent(List * list) {
   {
     list->current->prev->next = NULL;
     list->tail = list->current->prev;
-    list->current = list->current->prev;
-
+    list->current = NULL; 
+    /** En este caso no se podria apuntar al nodo siguiente como lo piden las instruccions ya que es la cola de la lista**/
   } else {
     if (temp->next != NULL) temp->next->prev = temp->prev;
     if (temp->prev != NULL) temp->prev->next = temp->next;
