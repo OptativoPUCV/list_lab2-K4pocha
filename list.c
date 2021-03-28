@@ -156,55 +156,17 @@ void * popBack(List * list) {
 
 void * popCurrent(List * list) {
 
-  void *dato;
-  dato = calloc(1, sizeof(void *)); /**reservando memoria para dato "void" y asi                                            guardar contenido de list->current->data **/
-  if (list->head == NULL || list->current == NULL)
-  { 
-    return 0;
-  }
+ Node * temp = list->current;
 
-  Node * temp = list->current->prev;
-  dato = (List *)temp->data;
-
-  if (list->current == list->head) // caso current en head 
-  {
-    temp->next = list->current->next;
-    list->head = list->current->next;
-    list->current->prev->next = temp;
-    //list->head->next = temp->next->next;
-    //free(temp);
-    //return dato;
-  }
-  
-  else if (list->current == list->tail)
-  {
-    list->tail = temp->prev;
-    list->tail->prev = temp->prev->prev;
-    list->current = temp->prev;
-
-    list->current->next = NULL;
-    list->tail->next = NULL;
-    //free(temp);
-    //return dato;
-  } 
-  else {
-   /** Node * prev = list->current->prev;
-    prev->next = temp->next;
-    list->current = temp->next;
-    free(temp);
-    return dato; **/
-
-    temp = list->current->prev;
-    temp->next = list->current->next;
-    list->current->next->prev = temp;
-
-
-    //return dato;
-
-  }
-  free(temp);
-  return dato;
-  //return dato;
+ if(list->current->prev != NULL)
+ {
+   list->current->prev->next = temp->next;
+ } else list->head = temp->next;
+ if (temp->next != NULL)
+ {
+   temp->next->prev = temp->prev;
+ }
+ return (void *) temp->data;
 }
 
 

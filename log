@@ -557,3 +557,9 @@ Sun Mar 28 21:11:42 UTC 2021:
  1 file changed, 4 insertions(+), 4 deletions(-)
  tests:  0|0
 3e9ee24
+Sun Mar 28 21:16:50 UTC 2021: 
+ list.c | 52 +++++++---------------------------------------------
+ 1 file changed, 7 insertions(+), 45 deletions(-)
+ tests:  11|1
+total_score: 55/70
+a126c79
