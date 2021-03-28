@@ -158,7 +158,11 @@ void * popCurrent(List * list) {
 
  Node * temp = list->current;
 
- if(list->current->prev != NULL)
+ void * dato;
+ dato = calloc(1, sizeof(void *));
+ dato = (List *)list->current->data;
+
+/** if(list->current->prev != NULL)
  {
    list->current->prev->next = temp->next;
  } else list->head = temp->next;
@@ -166,7 +170,17 @@ void * popCurrent(List * list) {
  {
    temp->next->prev = temp->prev;
  }
- return (void *) temp->data;
+ **/
+ if (list->current == NULL) return NULL;
+
+ if (temp->next != NULL) temp->next->prev = temp->prev;
+ if (temp->prev != NULL) temp->prev->next = temp->next;
+
+
+
+
+
+ return dato;
 }
 
 
