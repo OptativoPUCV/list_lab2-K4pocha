@@ -188,6 +188,7 @@ void * popCurrent(List * list) {
   } else {
     if (temp->next != NULL) temp->next->prev = temp->prev;
     if (temp->prev != NULL) temp->prev->next = temp->next;
+    list->current = list->current->next;
   }
   free(temp);
  return dato;
