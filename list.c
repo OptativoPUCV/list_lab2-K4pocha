@@ -184,7 +184,7 @@ void * popCurrent(List * list) {
 
     list->current->next = NULL;
     list->tail->next = NULL;
-    free(temp);
+    //free(temp);
     //return dato;
   } 
   else {
